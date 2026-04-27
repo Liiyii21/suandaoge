@@ -5,30 +5,43 @@
 }
 
 :root {
-    --primary-color: #ff6b35;
-    --secondary-color: #ff8c42;
-    --text-color: #2d2d2d;
-    --text-light: #666666;
-    --bg-color: #fafafa;
-    --bg-white: #ffffff;
-    --border-color: #e0e0e0;
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+    /* 玄学高级配色 */
+    --primary-color: #d4af37;        /* 金色 */
+    --secondary-color: #c9a961;      /* 浅金色 */
+    --accent-color: #8b7355;         /* 古铜色 */
+    --text-color: #e8e6e3;           /* 浅米色 */
+    --text-light: #a8a29e;           /* 灰米色 */
+    --text-dark: #1a1a1a;            /* 深黑 */
+    --bg-color: #0f0f0f;             /* 深黑背景 */
+    --bg-dark: #1a1a1a;              /* 次深背景 */
+    --bg-card: #1f1f1f;              /* 卡片背景 */
+    --bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    --border-color: #2a2a2a;         /* 深色边框 */
+    --border-gold: #d4af37;          /* 金色边框 */
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 8px 30px rgba(212, 175, 55, 0.3);
+    --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-    line-height: 1.6;
+    font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+    line-height: 1.8;
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background: var(--bg-color);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
 }
 
 .header {
-    background: var(--bg-white);
-    border-bottom: 1px solid var(--border-color);
+    background: rgba(15, 15, 15, 0.95);
+    border-bottom: 1px solid var(--border-gold);
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(212, 175, 55, 0.1);
 }
 
 .navbar {
@@ -43,14 +56,18 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.25rem;
+    gap: 0.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    font-family: 'STKaiti', 'KaiTi', serif;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 .logo-icon {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
 }
 
 .nav-menu {
@@ -126,9 +143,23 @@ body {
 }
 
 .hero {
-    background: var(--bg-color);
-    padding: 3rem 2rem;
+    background: var(--bg-gradient);
+    padding: 4rem 2rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .hero-content {
@@ -138,13 +169,22 @@ body {
 
 .hero-title {
     font-size: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: var(--text-color);
     font-weight: 800;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 1;
 }
 
 .highlight {
     color: var(--primary-color);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .hero-subtitle {
@@ -188,12 +228,24 @@ body {
 }
 
 .input-container {
-    background: var(--bg-white);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-    margin-bottom: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-gold);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.input-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
 }
 
 .main-input {
@@ -201,10 +253,18 @@ body {
     min-height: 120px;
     border: none;
     outline: none;
-    font-size: 1rem;
-    font-family: inherit;
+    font-size: 1.05rem;
+    font-family: 'Noto Serif SC', serif;
     resize: vertical;
     margin-bottom: 1rem;
+    background: transparent;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+.main-input::placeholder {
+    color: var(--text-light);
+    opacity: 0.6;
 }
 
 .input-footer {
@@ -228,14 +288,22 @@ body {
 }
 
 .send-btn {
-    background: var(--primary-color);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-dark);
     border: none;
-    padding: 0.6rem 1.5rem;
-    border-radius: 6px;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    letter-spacing: 0.1em;
+}
+
+.send-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
 }
 
 .quick-links {
@@ -1984,17 +2052,29 @@ body {
 .ai-response {
     max-width: 900px;
     margin: 2rem auto;
-    background: var(--bg-white);
-    border-radius: 12px;
-    box-shadow: var(--shadow-hover);
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border-gold);
+    box-shadow: var(--shadow-gold);
     overflow: hidden;
-    animation: slideIn 0.3s ease-out;
+    animation: slideIn 0.5s ease-out;
+    position: relative;
+}
+
+.ai-response::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
 }
 
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -2003,38 +2083,43 @@ body {
 }
 
 .response-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.05) 100%);
+    color: var(--primary-color);
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid var(--border-gold);
 }
 
 .response-header h3 {
     margin: 0;
     font-size: 1.3rem;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    letter-spacing: 0.1em;
 }
 
 .close-response {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
-    width: 32px;
-    height: 32px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--border-gold);
+    color: var(--primary-color);
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2rem;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
 }
 
 .close-response:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(212, 175, 55, 0.2);
+    transform: rotate(90deg);
 }
 
 .response-content {
-    padding: 2rem;
+    padding: 2.5rem;
     min-height: 200px;
+    background: var(--bg-dark);
 }
 
 .loading {
@@ -2043,13 +2128,14 @@ body {
 }
 
 .spinner {
-    border: 4px solid #f3f3f3;
+    border: 4px solid rgba(212, 175, 55, 0.1);
     border-top: 4px solid var(--primary-color);
     border-radius: 50%;
     width: 50px;
     height: 50px;
     animation: spin 1s linear infinite;
     margin: 0 auto 1rem;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 @keyframes spin {
@@ -2060,20 +2146,24 @@ body {
 .loading p {
     color: var(--text-light);
     font-size: 1rem;
+    font-family: 'STKaiti', 'KaiTi', serif;
 }
 
 .answer-text {
     color: var(--text-color);
-    line-height: 1.8;
+    line-height: 2;
     font-size: 1.05rem;
     white-space: pre-wrap;
+    font-family: 'Noto Serif SC', serif;
+    letter-spacing: 0.05em;
 }
 
 .error-message {
-    color: #dc3545;
-    background: #f8d7da;
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
     padding: 1.5rem;
     border-radius: 8px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
     text-align: center;
 }
 
@@ -2084,12 +2174,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    animation: fadeIn 0.2s ease-out;
+    animation: fadeIn 0.3s ease-out;
 }
 
 @keyframes fadeIn {
@@ -2098,58 +2189,76 @@ body {
 }
 
 .birth-modal-content {
-    background: var(--bg-white);
-    border-radius: 16px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-gold);
+    border-radius: 20px;
     max-width: 500px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    animation: slideUp 0.3s ease-out;
+    animation: slideUp 0.4s ease-out;
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+    position: relative;
+}
+
+.birth-modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
 }
 
 @keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(50px) scale(0.9);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
 .birth-modal-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.05) 100%);
+    color: var(--primary-color);
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid var(--border-gold);
 }
 
 .birth-modal-header h3 {
     margin: 0;
     font-size: 1.3rem;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    letter-spacing: 0.1em;
 }
 
 .close-modal {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
-    width: 32px;
-    height: 32px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--border-gold);
+    color: var(--primary-color);
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2rem;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
 }
 
 .close-modal:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(212, 175, 55, 0.2);
+    transform: rotate(90deg);
 }
 
 .birth-modal-body {
     padding: 2rem;
+    background: var(--bg-dark);
 }
 
 .birth-modal-body .form-group {
@@ -2160,23 +2269,28 @@ body {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: var(--text-color);
+    color: var(--primary-color);
+    font-family: 'STKaiti', 'KaiTi', serif;
+    letter-spacing: 0.05em;
 }
 
 .birth-modal-body input,
 .birth-modal-body select {
     width: 100%;
-    padding: 0.75rem;
-    border: 2px solid var(--border-color);
+    padding: 0.875rem;
+    border: 1px solid var(--border-gold);
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.2s;
+    transition: all 0.3s ease;
+    background: var(--bg-card);
+    color: var(--text-color);
 }
 
 .birth-modal-body input:focus,
 .birth-modal-body select:focus {
     outline: none;
     border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
 .birth-modal-body .form-row {
@@ -2187,10 +2301,11 @@ body {
 
 .birth-modal-footer {
     padding: 1.5rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-gold);
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+    background: var(--bg-dark);
 }
 
 .modal-btn {
@@ -2200,12 +2315,14 @@ body {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
 }
 
 .cancel-btn {
-    background: var(--bg-color);
+    background: var(--bg-card);
     color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .cancel-btn:hover {
@@ -2213,13 +2330,14 @@ body {
 }
 
 .save-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-dark);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 .save-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
 }
 
 /* 响应式设计 */
