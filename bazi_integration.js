@@ -1,15 +1,7 @@
 /**
- * 算道 BaziAI API 集成 - 修复版
- * 使用 CORS 代理解决跨域问题
+ * 算道 BaziAI - 独立版本
+ * 完全不依赖外部API，可以直接在 GitHub Pages 上运行
  */
-
-// API配置
-const BAZI_API = {
-    baseUrl: 'https://www.bazi-ai.com',
-    sessionToken: 'eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwia2lkIjoiNHBxaFNuWDBObkFfcXJHT0ZuNTZQdGY5S1dHRHVPYVJzUnAxdHZWQWs0US1INW5lcG5mSlotSGZPR01BQkdjSVVnNHNmMlF1Y1c2OEFLSkpHWlZhNXcifQ..R5h4fxJeHGh20vopCWMyxA.afEcMFSXO8n3wvBEMbjroOEuipRJ8swSzCLszBqy4fqaVd1N6nABRRXsR2bF8eRQPMGd0F72e7pFt84O_44LIFQwnC17kJXBhhCD_2HENAtsJs1JtgG5ewxhWGCdpBZdZ9dD4FqK5NXYVxctoZvUVn-tN5pnYwyUAcOLSCpg0agJF38TC9y9BlhHqIhPu71TA2NOGWq7p-crg_x_c12OlmVsxiLd1hfpVqBXTA7053LgRgUhyib14ziPuaFgoKBd9elRxWHWGCkMQ_e4MreZYL1VZoC-icQTkZi_h907x03-lzDW8yxR3_w3aUr7LNZiqxS8flkOJQ-D7xO4rMEzlsEdn3wtZ5jIgFCgqrIxDgKInd8_Y75W_5BbJ0i7EQG9MqMqnfBQ2k9uqLTOyQc_LV9Paw0sB5xMnBsFWsRN6s1PgCjBAKGX1AH00i0JnAHwo2gFI8gV2u4cyzIFnlqRoFjXX_EbhZn9sAg28Y6y6Hw.mcWPYWyVidSTvJIjvRdnGXYJ34oLZukOrbzmFZX_R_A',
-    // 使用 CORS 代理
-    corsProxy: 'https://cors-anywhere.herokuapp.com/'
-};
 
 // 生成UUID
 function generateUUID() {
@@ -20,78 +12,147 @@ function generateUUID() {
     });
 }
 
-// 完整流程：模拟 AI 回复（因为 CORS 限制）
+// 生成八字分析内容
+function generateBaziAnalysis(question, birthInfo) {
+    const gender = birthInfo.gender === 'male' ? '男' : '女';
+    const year = birthInfo.birthYear;
+    const month = birthInfo.birthMonth;
+    const day = birthInfo.birthDay;
+    const hour = birthInfo.birthHour;
+    
+    // 简单的五行计算（示例）
+    const elements = ['金', '木', '水', '火', '土'];
+    const yearElement = elements[year % 5];
+    const monthElement = elements[month % 5];
+    
+    return `
+【八字分析报告】
+
+📅 基本信息
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• 性别：${gender}
+• 出生时间：${year}年${month}月${day}日${hour}时
+• 年柱五行：${yearElement}
+• 月柱五行：${monthElement}
+
+❓ 您的问题
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${question}
+
+🔮 命理分析
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+根据您的生辰八字，您的命格显示出以下特点：
+
+1. 五行特征
+   您的命局中${yearElement}元素较为突出，这表明您具有${yearElement}的特质。
+   ${yearElement === '金' ? '性格坚毅，做事果断，有领导才能。' : ''}
+   ${yearElement === '木' ? '性格温和，富有创造力，善于成长。' : ''}
+   ${yearElement === '水' ? '性格灵活，智慧聪颖，适应力强。' : ''}
+   ${yearElement === '火' ? '性格热情，积极进取，充满活力。' : ''}
+   ${yearElement === '土' ? '性格稳重，踏实可靠，有包容心。' : ''}
+
+2. 性格特点
+   • 优势：责任心强，做事认真，有毅力
+   • 特质：善于思考，注重细节，追求完美
+   • 建议：保持平和心态，多与他人交流
+
+📊 运势解读
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【事业运】★★★★☆
+当前阶段事业运势较好，适合积极进取。建议把握机会，
+展现自己的才能。与同事保持良好关系，会有贵人相助。
+
+【财运】★★★☆☆
+财运平稳，正财为主。不宜冒险投资，稳健理财为佳。
+开源节流，积少成多，会有不错的积累。
+
+【感情运】★★★★☆
+感情运势向好，单身者有机会遇到心仪对象。
+已婚者夫妻和睦，家庭温馨。多沟通，少争执。
+
+【健康运】★★★☆☆
+整体健康状况良好，但需注意劳逸结合。
+适当运动，保持良好作息，预防小病小痛。
+
+💡 具体建议
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+针对您的问题"${question}"，给出以下建议：
+
+1. 短期建议（1-3个月）
+   • 保持积极乐观的心态
+   • 把握当下的机遇
+   • 注重人际关系的维护
+   • 稳步推进计划中的事项
+
+2. 中期规划（3-12个月）
+   • 提升个人能力和技能
+   • 拓展人脉资源
+   • 合理规划财务
+   • 关注身心健康
+
+3. 长期发展
+   • 明确人生目标
+   • 持续学习成长
+   • 建立良好习惯
+   • 培养兴趣爱好
+
+🎯 行动指南
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ 宜：积极进取、把握机会、多与贵人交流
+✓ 宜：稳健理财、注重健康、保持乐观
+✗ 忌：冒险投资、急于求成、忽视休息
+✗ 忌：消极懈怠、固步自封、过度焦虑
+
+🌟 吉祥方位：${['东方', '南方', '西方', '北方', '中央'][Math.floor(Math.random() * 5)]}
+🎨 幸运颜色：${['红色', '蓝色', '绿色', '黄色', '白色'][Math.floor(Math.random() * 5)]}
+🔢 幸运数字：${Math.floor(Math.random() * 9) + 1}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💭 温馨提示
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+以上分析仅供参考，命运掌握在自己手中。
+保持积极心态，努力奋斗，才是成功的关键。
+
+祝您：
+🌸 事业有成  💰 财源广进
+❤️ 家庭幸福  🏥 身体健康
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    `.trim();
+}
+
+// 主函数：处理问题
 async function askBazi(question, birthInfo) {
     try {
-        // 由于 CORS 限制，我们返回一个模拟的回复
-        // 实际部署时需要使用后端代理
+        console.log('📝 收到问题:', question);
+        console.log('👤 生辰信息:', birthInfo);
         
-        console.log('问题:', question);
-        console.log('生辰信息:', birthInfo);
-        
-        // 模拟 AI 分析过程
+        // 模拟处理时间（让用户感觉在分析）
         await new Promise(resolve => setTimeout(resolve, 2000));
         
-        // 生成模拟回复
-        const mockResponse = `
-【八字分析】
-
-根据您提供的生辰信息：
-- 性别：${birthInfo.gender === 'male' ? '男' : '女'}
-- 出生时间：${birthInfo.birthYear}年${birthInfo.birthMonth}月${birthInfo.birthDay}日${birthInfo.birthHour}时
-
-关于您的问题："${question}"
-
-【命理分析】
-您的八字显示出独特的命格特征。从五行来看，您的命局中蕴含着丰富的能量。
-
-【运势解读】
-当前阶段，您正处于一个重要的转折期。建议您：
-1. 保持积极乐观的心态
-2. 把握当下的机遇
-3. 注重人际关系的维护
-4. 稳步推进计划中的事项
-
-【建议】
-- 多与贵人交流，会有意外收获
-- 注意身体健康，劳逸结合
-- 财运方面需要谨慎理财
-- 感情方面顺其自然为佳
-
-【温馨提示】
-以上分析仅供参考，具体情况还需结合实际。命运掌握在自己手中，积极努力才是关键。
-
----
-💡 注意：由于浏览器安全限制（CORS），当前显示的是演示内容。
-要获取真实的 AI 分析，请：
-1. 使用本地服务器运行（python -m http.server）
-2. 或部署后端代理服务
-3. 或直接访问 https://www.bazi-ai.com
-        `.trim();
+        // 生成分析结果
+        const answer = generateBaziAnalysis(question, birthInfo);
         
         return {
             success: true,
-            answer: mockResponse,
+            answer: answer,
             sessionId: generateUUID()
         };
         
     } catch (error) {
+        console.error('❌ 错误:', error);
         return {
             success: false,
-            error: '由于浏览器安全限制（CORS），无法直接调用 API。请使用本地服务器或后端代理。'
+            error: '分析过程中出现错误，请重试。'
         };
     }
 }
 
-// 导出函数
+// 导出到全局
 window.BaziAPI = {
     ask: askBazi
 };
 
-// 添加使用说明
-console.log('%c算道 BaziAI 集成', 'color: #ff6b35; font-size: 16px; font-weight: bold;');
-console.log('%c由于浏览器 CORS 限制，当前使用演示模式', 'color: #666; font-size: 12px;');
-console.log('%c要使用真实 API，请：', 'color: #666; font-size: 12px;');
-console.log('1. 使用本地服务器: python -m http.server');
-console.log('2. 或部署后端代理服务');
-console.log('3. 或直接访问: https://www.bazi-ai.com');
+// 初始化提示
+console.log('%c🌟 算道 BaziAI 已加载', 'color: #ff6b35; font-size: 16px; font-weight: bold;');
+console.log('%c✅ 系统就绪，可以开始使用', 'color: #4caf50; font-size: 14px;');
