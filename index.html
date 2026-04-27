@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算道 - AI驱动的八字分析平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-icon">☯️</span>
+                <span class="logo-text">算道</span>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-dropdown">
+                    <button class="nav-item dropdown-btn">📖 八字解读 ▼</button>
+                    <div class="dropdown-content">
+                        <a href="pages/love-reading.html">❤️ 爱情解读</a>
+                        <a href="pages/career-reading.html">💼 事业解读</a>
+                        <a href="pages/health-reading.html">🏥 健康解读</a>
+                        <a href="pages/zodiac-reading.html">⭐ 生肖解读</a>
+                        <a href="pages/life-reading.html">👤 生命解读</a>
+                    </div>
+                </div>
+                <a href="#zodiac" class="nav-item">🌟 占卜</a>
+                <a href="pages/faq.html" class="nav-item">💬 课问</a>
+                <a href="#pricing" class="nav-item">💰 价格</a>
+            </div>
+            <div class="nav-right">
+                <select class="lang-selector">
+                    <option>简体中文</option>
+                    <option>English</option>
+                </select>
+                <button class="theme-toggle">🌙</button>
+                <button class="upgrade-btn">✨ 分享</button>
+                <a href="pages/login.html" class="login-btn" id="loginBtn">登录</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="announcement">
+            <span class="announcement-icon">📢</span>
+            <span>DeepSeek R1 0528版本已上线</span>
+        </div>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title"><span class="highlight">算道AI</span>分析工具</h1>
+                <p class="hero-subtitle">算道 - AI遇见东方智慧</p>
+                
+                <div class="input-tabs">
+                    <button class="tab-btn">🌟 占卜</button>
+                    <button class="tab-btn active">👤 单人</button>
+                    <button class="tab-btn">💑 双人 <span class="pro-badge">Pro</span></button>
+                </div>
+
+                <div class="input-container">
+                    <textarea class="main-input" id="questionInput" placeholder="在此输入您的问题或从下方建议中选择..."></textarea>
+                    <div class="input-footer">
+                        <button class="attach-btn" id="birthInfoBtn">📎 出生信息</button>
+                        <span class="token-count">🔥 3000</span>
+                        <button class="send-btn" id="sendBtn">✈️ 发送</button>
+                    </div>
+                </div>
+
+                <!-- AI回复区域 -->
+                <div id="aiResponse" class="ai-response" style="display: none;">
+                    <div class="response-header">
+                        <h3>✨ AI分析结果</h3>
+                        <button class="close-response" id="closeResponse">✕</button>
+                    </div>
+                    <div class="response-content" id="responseContent"></div>
+                </div>
+
+                <div class="quick-links">
+                    <span class="quick-label">主题:</span>
+                    <a href="#" class="quick-link">👤 人生轨迹分析</a>
+                    <a href="#" class="quick-link">💑 双人关系解析</a>
+                    <a href="#" class="quick-link">📊 财运发展解析</a>
+                    <a href="#" class="quick-link">💼 职业发展预测</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="models" class="section models-section">
+            <h2>AI模型</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>DeepSeek R1</h3>
+                    <p>主力AI模型，提供深度推理能力</p>
+                    <a href="/deepseek" class="card-link">了解更多 →</a>
+                </div>
+                <div class="card">
+                    <h3>Qwen3</h3>
+                    <p>备选AI模型，多维度分析</p>
+                    <a href="/qwen3" class="card-link">了解更多 →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2 class="section-title">八字常见问题</h2>
+            <p class="section-subtitle">我们收集了用户最常问的八字相关问题，点击问题即可复制并开始咨询</p>
+            
+            <div class="faq-tags">
+                <button class="faq-tag active">🔥 小红书超门</button>
+                <button class="faq-tag">事业财运</button>
+                <button class="faq-tag">婚姻爱情</button>
+                <button class="faq-tag">健康平安</button>
+                <button class="faq-tag">学业考试</button>
+                <button class="faq-tag">家庭关系</button>
+                <button class="faq-tag">流年运势</button>
+            </div>
+
+            <div class="faq-cards">
+                <div class="faq-card">
+                    <p class="faq-text">请重点解读：1 整体分析格局、考虑身弱身强等，分析十神关系，体现于哪，注意逻辑合理，综合各种信息文字分析，不要简单...</p>
+                    <div class="faq-footer">
+                        <span class="faq-badge">命盘解盘</span>
+                        <span class="faq-badge">大运流年</span>
+                        <span class="faq-views">👁️ 3666</span>
+                    </div>
+                </div>
+
+                <div class="faq-card">
+                    <p class="faq-text">请对我做出专业的八字分析，详细分析我未来五年的财运/事业运/婚运。</p>
+                    <div class="faq-footer">
+                        <span class="faq-badge">全面分析</span>
+                        <span class="faq-badge">五年运势</span>
+                        <span class="faq-views">👁️ 2512</span>
+                    </div>
+                </div>
+
+                <div class="faq-card">
+                    <p class="faq-text">请结合大运流年，推测一下我的未来配偶将是现实型还是浪漫型，从以下几个维度来测：外貌、年龄、职业、家乡、父母座、父...</p>
+                    <div class="faq-footer">
+                        <span class="faq-badge">婚姻</span>
+                        <span class="faq-badge">配偶特征</span>
+                        <span class="faq-views">👁️ 1174</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="models" class="section models-section">
+            <h2 class="section-title">AI模型</h2>
+            <div class="model-cards">
+                <div class="model-card">
+                    <h3>DeepSeek R1</h3>
+                    <p>主力AI模型，提供深度推理能力</p>
+                    <a href="pages/models.html" class="card-link">了解更多 →</a>
+                </div>
+                <div class="model-card">
+                    <h3>Qwen3</h3>
+                    <p>备选AI模型，多维度分析</p>
+                    <a href="pages/models.html" class="card-link">了解更多 →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="readings" class="section readings-section">
+            <h2 class="section-title">八字解读</h2>
+            <div class="reading-grid">
+                <a href="pages/love-reading.html" class="reading-card">
+                    <span class="reading-icon">❤️</span>
+                    <span class="reading-text">爱情解读</span>
+                </a>
+                <a href="pages/career-reading.html" class="reading-card">
+                    <span class="reading-icon">💼</span>
+                    <span class="reading-text">事业解读</span>
+                </a>
+                <a href="pages/health-reading.html" class="reading-card">
+                    <span class="reading-icon">🏥</span>
+                    <span class="reading-text">健康解读</span>
+                </a>
+                <a href="pages/zodiac-reading.html" class="reading-card">
+                    <span class="reading-icon">🐉</span>
+                    <span class="reading-text">生肖解读</span>
+                </a>
+                <a href="pages/life-reading.html" class="reading-card">
+                    <span class="reading-icon">🌟</span>
+                    <span class="reading-text">生命解读</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="zodiac" class="section">
+            <h2 class="section-title">生肖</h2>
+            <div class="model-cards">
+                <div class="model-card">
+                    <h3>生肖与五行分析</h3>
+                    <p>深入分析生肖与金木水火土的关系</p>
+                    <a href="pages/zodiac-element.html" class="card-link">开始分析 →</a>
+                </div>
+                <div class="model-card">
+                    <h3>2025生肖运势</h3>
+                    <p>2025年十二生肖运势预测</p>
+                    <a href="pages/zodiac-2025.html" class="card-link">查看运势 →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>模型</h4>
+                    <a href="#">DeepSeek R1</a>
+                    <a href="#">Qwen3</a>
+                </div>
+                <div class="footer-col">
+                    <h4>八字解读</h4>
+                    <a href="#">爱情解读</a>
+                    <a href="#">事业解读</a>
+                    <a href="#">健康解读</a>
+                    <a href="#">生肖解读</a>
+                    <a href="#">生命解读</a>
+                </div>
+                <div class="footer-col">
+                    <h4>生肖</h4>
+                    <a href="#">生肖与五行分析</a>
+                    <a href="#">2025生肖运势</a>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <a href="pages/faq.html">常见问题</a>
+                    <a href="pages/blog.html">博客</a>
+                    <a href="pages/feedback.html">反馈</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" aria-label="TikTok">📱</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="YouTube">📺</a>
+                </div>
+                <div class="footer-legal">
+                    <a href="pages/privacy-policy.html">隐私政策</a>
+                    <a href="pages/refund-policy.html">退款政策</a>
+                    <a href="pages/terms-of-service.html">服务条款</a>
+                </div>
+                <p class="copyright">2025 • 算道 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bazi_integration.js"></script>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
+
