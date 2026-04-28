@@ -313,38 +313,6 @@ body::before {
     }
 }
 
-/* 龙纹装饰 */
-.dragon-pattern {
-    position: absolute;
-    font-size: 5rem;
-    opacity: 0.08;
-    pointer-events: none;
-    animation: dragonFloat 8s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
-}
-
-.dragon-pattern-left {
-    top: 50%;
-    left: -80px;
-    transform: translateY(-50%) scaleX(-1);
-}
-
-.dragon-pattern-right {
-    top: 50%;
-    right: -80px;
-    transform: translateY(-50%);
-    animation-delay: 4s;
-}
-
-@keyframes dragonFloat {
-    0%, 100% {
-        transform: translateY(-50%) translateX(0);
-    }
-    50% {
-        transform: translateY(-50%) translateX(10px);
-    }
-}
-
 .input-box {
     background: var(--bg-card);
     border: 2px solid var(--primary-gold);
