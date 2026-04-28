@@ -15,14 +15,14 @@
                 <span class="logo-text">算道</span>
             </div>
             <nav class="nav">
-                <a href="#" class="nav-link">首页</a>
-                <a href="#" class="nav-link">关于</a>
+                <a href="#home" class="nav-link">首页</a>
+                <a href="#about" class="nav-link">关于</a>
             </nav>
         </div>
     </header>
 
     <!-- 主内容区 -->
-    <main class="main">
+    <main class="main" id="home">
         <div class="container">
             <!-- 标题区 -->
             <div class="title-section">
@@ -70,12 +70,12 @@
             <div class="suggestions">
                 <p class="suggestions-title">热门问题</p>
                 <div class="suggestion-tags">
-                    <button class="tag">💼 事业运势</button>
-                    <button class="tag">💑 姻缘分析</button>
-                    <button class="tag">💰 财运预测</button>
-                    <button class="tag">🏥 健康运势</button>
-                    <button class="tag">👨‍👩‍👧 家庭关系</button>
-                    <button class="tag">📚 学业考试</button>
+                    <button class="tag" data-question="请帮我分析一下我的事业运势，未来发展如何？">💼 事业运势</button>
+                    <button class="tag" data-question="请帮我分析我的姻缘运势，何时能遇到合适的对象？">💑 姻缘分析</button>
+                    <button class="tag" data-question="请帮我预测一下我的财运，近期财运如何？">💰 财运预测</button>
+                    <button class="tag" data-question="请帮我分析我的健康运势，需要注意什么？">🏥 健康运势</button>
+                    <button class="tag" data-question="请帮我分析我的家庭关系运势，如何改善家庭关系？">👨‍👩‍👧 家庭关系</button>
+                    <button class="tag" data-question="请帮我分析我的学业运势，考试运如何？">📚 学业考试</button>
                 </div>
             </div>
 
@@ -101,13 +101,17 @@
     </main>
 
     <!-- 简洁页脚 -->
-    <footer class="footer">
+    <footer class="footer" id="about">
         <div class="container">
+            <div class="about-section">
+                <h3>关于算道</h3>
+                <p>算道是一个结合传统八字理论与现代AI技术的智能分析平台，为您提供专业、准确的命理咨询服务。</p>
+            </div>
             <p class="footer-text">© 2025 算道 · AI八字分析平台</p>
             <div class="footer-links">
-                <a href="#">隐私政策</a>
-                <a href="#">服务条款</a>
-                <a href="#">联系我们</a>
+                <a href="#" id="privacyLink">隐私政策</a>
+                <a href="#" id="termsLink">服务条款</a>
+                <a href="#" id="contactLink">联系我们</a>
             </div>
         </div>
     </footer>
