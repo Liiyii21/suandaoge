@@ -5,23 +5,23 @@
 }
 
 :root {
-    /* 高级玄学配色 - 墨蓝金奢华风 */
-    --primary-color: #e8c547;        /* 香槟金 */
-    --secondary-color: #d4a574;      /* 玫瑰金 */
-    --accent-color: #9d7e6b;         /* 古铜棕 */
-    --text-color: #f5f1e8;           /* 象牙白 */
-    --text-light: #c4b5a0;           /* 暖灰金 */
-    --text-dark: #1a1a2e;            /* 深墨蓝 */
-    --bg-color: #0a0e27;             /* 深邃墨蓝 */
-    --bg-dark: #16213e;              /* 次深墨蓝 */
-    --bg-card: #1a2332;              /* 卡片墨蓝 */
-    --bg-white: #1f2937;             /* 深灰蓝卡片 */
-    --bg-gradient: linear-gradient(135deg, #16213e 0%, #0a0e27 100%);
-    --border-color: #2d3748;         /* 深蓝灰边框 */
-    --border-gold: #e8c547;          /* 金色边框 */
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    --shadow-hover: 0 8px 30px rgba(232, 197, 71, 0.25);
-    --shadow-gold: 0 0 25px rgba(232, 197, 71, 0.3);
+    /* 玄学神秘配色 - 深紫金风 */
+    --primary-color: #ffd700;        /* 赤金色 */
+    --secondary-color: #ff8c42;      /* 朱砂橙 */
+    --accent-color: #9d4edd;         /* 神秘紫 */
+    --text-color: #f5f3e8;           /* 古纸白 */
+    --text-light: #c9b8a0;           /* 暗金米 */
+    --text-dark: #2d1b4e;            /* 深紫 */
+    --bg-color: #2d1b4e;             /* 深紫背景 */
+    --bg-dark: #3d2663;              /* 次深紫 */
+    --bg-card: #4a2f6f;              /* 卡片紫 */
+    --bg-white: #5a3d7a;             /* 浅紫卡片 */
+    --bg-gradient: linear-gradient(135deg, #3d2663 0%, #2d1b4e 100%);
+    --border-color: #6b4a8f;         /* 紫色边框 */
+    --border-gold: #ffd700;          /* 赤金边框 */
+    --shadow: 0 4px 20px rgba(45, 27, 78, 0.6);
+    --shadow-hover: 0 8px 30px rgba(255, 215, 0, 0.4);
+    --shadow-gold: 0 0 30px rgba(255, 215, 0, 0.5);
 }
 
 body {
@@ -30,20 +30,20 @@ body {
     color: var(--text-color);
     background: var(--bg-color);
     background-image: 
-        radial-gradient(circle at 20% 50%, rgba(232, 197, 71, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(212, 165, 116, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 20%, rgba(22, 33, 62, 0.5) 0%, transparent 70%);
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, rgba(255, 140, 66, 0.08) 0%, transparent 70%);
     background-attachment: fixed;
 }
 
 .header {
-    background: rgba(10, 14, 39, 0.95);
+    background: rgba(45, 27, 78, 0.95);
     border-bottom: 1px solid var(--border-gold);
     position: sticky;
     top: 0;
     z-index: 100;
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(232, 197, 71, 0.15);
+    box-shadow: 0 2px 20px rgba(255, 215, 0, 0.25);
 }
 
 .navbar {
@@ -64,12 +64,12 @@ body {
     color: var(--primary-color);
     font-family: 'STKaiti', 'KaiTi', serif;
     letter-spacing: 0.2em;
-    text-shadow: 0 0 15px rgba(232, 197, 71, 0.4);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
 
 .logo-icon {
     font-size: 2rem;
-    filter: drop-shadow(0 0 10px rgba(232, 197, 71, 0.6));
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
 }
 
 .nav-menu {
@@ -182,8 +182,8 @@ body {
 
 .highlight {
     color: var(--primary-color);
-    text-shadow: 0 0 25px rgba(232, 197, 71, 0.6);
-    background: linear-gradient(135deg, #e8c547 0%, #f4e4a6 50%, #e8c547 100%);
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -290,7 +290,7 @@ body {
 }
 
 .send-btn {
-    background: linear-gradient(135deg, #e8c547 0%, #d4a574 100%);
+    background: linear-gradient(135deg, #ffd700 0%, #ff8c42 100%);
     color: var(--text-dark);
     border: none;
     padding: 0.75rem 2rem;
@@ -299,13 +299,13 @@ body {
     font-weight: 700;
     font-size: 1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(232, 197, 71, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
     letter-spacing: 0.1em;
 }
 
 .send-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(232, 197, 71, 0.6);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.7);
 }
 
 .quick-links {
