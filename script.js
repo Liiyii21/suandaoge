@@ -202,6 +202,114 @@ window.saveBirthInfo = saveBirthInfo;
 
 // ========== 网站功能增强 ==========
 
+// 1. 热门问题标签点击功能
+document.querySelectorAll('.tag').forEach(tag => {
+    tag.addEventListener('click', function() {
+        const question = this.getAttribute('data-question');
+        const questionInput = document.getElementById('questionInput');
+        
+        if (question && questionInput) {
+            questionInput.value = question;
+            // 滚动到输入框
+            questionInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // 聚焦输入框
+            questionInput.focus();
+            // 显示提示
+            showToast('✅ 问题已填充到输入框');
+        }
+    });
+});
+
+// 2. 导航链接平滑滚动
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            showToast('✅ 已跳转');
+        }
+    });
+});
+
+// 3. 页脚链接功能
+document.getElementById('privacyLink')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    showInfoModal('隐私政策', `
+        <h4>信息收集</h4>
+        <p>我们仅收集您主动提供的出生信息，用于八字分析。</p>
+        
+        <h4>信息使用</h4>
+        <p>您的个人信息仅用于提供算命服务，不会用于其他商业目的。</p>
+        
+        <h4>信息保护</h4>
+        <p>我们采用加密技术保护您的数据安全，不会向第三方泄露。</p>
+        
+        <h4>Cookie使用</h4>
+        <p>我们使用Cookie来改善用户体验，您可以在浏览器中禁用Cookie。</p>
+    `);
+});
+
+document.getElementById('termsLink')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    showInfoModal('服务条款', `
+        <h4>服务说明</h4>
+        <p>算道提供基于AI的八字分析服务，结果仅供参考。</p>
+        
+        <h4>用户责任</h4>
+        <p>用户应理性看待分析结果，不应完全依赖算命结果做重大决策。</p>
+        
+        <h4>服务限制</h4>
+        <p>我们不保证分析结果的绝对准确性，用户需自行判断。</p>
+        
+        <h4>免责声明</h4>
+        <p>因使用本服务产生的任何后果，平台不承担法律责任。</p>
+    `);
+});
+
+document.getElementById('contactLink')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    showInfoModal('联系我们', `
+        <h4>客服邮箱</h4>
+        <p>📧 support@suandao.ai</p>
+        
+        <h4>工作时间</h4>
+        <p>⏰ 周一至周五 9:00-18:00</p>
+        
+        <h4>反馈建议</h4>
+        <p>💬 欢迎通过邮箱向我们反馈问题和建议</p>
+        
+        <h4>技术支持</h4>
+        <p>🔧 如遇技术问题，请详细描述并发送邮件</p>
+    `);
+});
+
+// 显示信息模态框
+function showInfoModal(title, content) {
+    const modal = document.createElement('div');
+    modal.className = 'birth-modal';
+    modal.innerHTML = `
+        <div class="birth-modal-content info-modal">
+            <div class="birth-modal-header">
+                <h3>${title}</h3>
+                <button class="close-modal" onclick="this.closest('.birth-modal').remove()">✕</button>
+            </div>
+            <div class="birth-modal-body info-content">
+                ${content}
+            </div>
+            <div class="birth-modal-footer">
+                <button class="modal-btn save-btn" onclick="this.closest('.birth-modal').remove()">知道了</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+// 使函数全局可用
+window.showInfoModal = showInfoModal;
+
 // 1. FAQ卡片点击复制问题到输入框
 document.querySelectorAll('.faq-card').forEach(card => {
     card.addEventListener('click', function() {
