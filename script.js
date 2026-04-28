@@ -220,17 +220,22 @@ document.querySelectorAll('.tag').forEach(tag => {
     });
 });
 
-// 2. 导航链接平滑滚动
+// 2. 导航链接平滑滚动（只处理锚点链接）
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault();
         const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
         
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            showToast('✅ 已跳转');
+        // 只处理以#开头的锚点链接
+        if (targetId && targetId.startsWith('#')) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                showToast('✅ 已跳转');
+            }
         }
+        // 其他链接（如pages/login.html）让浏览器正常处理
     });
 });
 
