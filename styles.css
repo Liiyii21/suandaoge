@@ -32,6 +32,38 @@ body {
         radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(196, 30, 58, 0.1) 0%, transparent 50%);
     background-attachment: fixed;
+    animation: backgroundShift 20s ease-in-out infinite;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 背景装饰纹样 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(255, 215, 0, 0.02) 100px, rgba(255, 215, 0, 0.02) 101px),
+        repeating-linear-gradient(-45deg, transparent, transparent 100px, rgba(255, 215, 0, 0.02) 100px, rgba(255, 215, 0, 0.02) 101px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes backgroundShift {
+    0%, 100% {
+        background-position: 0% 0%, 100% 100%;
+    }
+    50% {
+        background-position: 100% 100%, 0% 0%;
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
 }
 
 .container {
@@ -132,6 +164,78 @@ body {
 .title-section {
     text-align: center;
     margin-bottom: 3rem;
+    animation: fadeInDown 1s ease-out;
+    position: relative;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 祥云装饰 */
+.cloud-decoration {
+    position: absolute;
+    font-size: 4rem;
+    opacity: 0.15;
+    animation: float 6s ease-in-out infinite;
+    filter: blur(1px);
+}
+
+.cloud-left {
+    top: -20px;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.cloud-right {
+    top: -20px;
+    right: 10%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* 八卦装饰 */
+.bagua-decoration {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    opacity: 0.1;
+    pointer-events: none;
+    animation: rotate 30s linear infinite;
+}
+
+.bagua-decoration::before {
+    content: '☯';
+    position: absolute;
+    font-size: 150px;
+    color: var(--primary-gold);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+}
+
+.bagua-left {
+    top: 100px;
+    left: -50px;
+}
+
+.bagua-right {
+    top: 300px;
+    right: -50px;
+    animation-direction: reverse;
 }
 
 .main-title {
@@ -194,6 +298,51 @@ body {
 /* 输入区域 */
 .input-section {
     margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
+    position: relative;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 龙纹装饰 */
+.dragon-pattern {
+    position: absolute;
+    font-size: 5rem;
+    opacity: 0.08;
+    pointer-events: none;
+    animation: dragonFloat 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.dragon-pattern-left {
+    top: 50%;
+    left: -80px;
+    transform: translateY(-50%) scaleX(-1);
+}
+
+.dragon-pattern-right {
+    top: 50%;
+    right: -80px;
+    transform: translateY(-50%);
+    animation-delay: 4s;
+}
+
+@keyframes dragonFloat {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0);
+    }
+    50% {
+        transform: translateY(-50%) translateX(10px);
+    }
 }
 
 .input-box {
@@ -203,6 +352,12 @@ body {
     padding: 2rem;
     box-shadow: var(--shadow-gold);
     position: relative;
+    transition: all 0.3s ease;
+}
+
+.input-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
 }
 
 .input-box::before {
@@ -214,6 +369,16 @@ body {
     height: 3px;
     background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
     border-radius: 16px 16px 0 0;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 .main-input {
@@ -264,11 +429,35 @@ body {
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
     letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 25px rgba(255, 215, 0, 0.7);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.98);
 }
 
 .btn-secondary {
@@ -341,6 +530,7 @@ body {
 .suggestions {
     text-align: center;
     margin-bottom: 4rem;
+    animation: fadeInUp 1s ease-out 0.5s both;
 }
 
 .suggestions-title {
@@ -366,13 +556,38 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.tag:hover::before {
+    width: 200px;
+    height: 200px;
 }
 
 .tag:hover {
     background: rgba(255, 215, 0, 0.2);
     border-color: var(--primary-gold);
     color: var(--primary-gold);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.tag:active {
+    transform: translateY(-1px) scale(1);
 }
 
 /* 功能特色 */
@@ -381,6 +596,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
+    animation: fadeInUp 1s ease-out 0.6s both;
 }
 
 .feature-card {
@@ -390,18 +606,47 @@ body {
     padding: 2.5rem;
     text-align: center;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+    animation: rotate 10s linear infinite;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.02);
     border-color: var(--primary-gold);
-    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
 }
 
 .feature-icon {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .feature-card h3 {
