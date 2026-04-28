@@ -1,0 +1,296 @@
+/* 认证页面样式 - 月白灰金主题 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* 背景装饰 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(160, 130, 109, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 115, 85, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.auth-page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 450px;
+}
+
+.auth-container {
+    background: #f5f5f5;
+    border: 2px solid #a0826d;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(160, 130, 109, 0.2);
+    padding: 2.5rem;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: #a0826d;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.back-link:hover {
+    color: #8b7355;
+    transform: translateX(-5px);
+}
+
+.auth-header h1 {
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 0.5rem;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.auth-header p {
+    color: #666666;
+    font-size: 1rem;
+}
+
+/* 社交登录按钮 */
+.auth-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid #d0d0d0;
+    border-radius: 12px;
+    background: white;
+    color: #333333;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.social-login-btn:hover {
+    border-color: #a0826d;
+    background: rgba(160, 130, 109, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(160, 130, 109, 0.2);
+}
+
+.social-login-btn svg {
+    flex-shrink: 0;
+}
+
+/* 分隔线 */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+    color: #666666;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.divider span {
+    padding: 0 1rem;
+    font-size: 0.9rem;
+}
+
+/* 表单样式 */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: #333333;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.form-group input {
+    padding: 1rem;
+    border: 2px solid #d0d0d0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: white;
+    color: #333333;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #a0826d;
+    box-shadow: 0 0 0 3px rgba(160, 130, 109, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #999999;
+}
+
+.forgot-link {
+    color: #a0826d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: right;
+    transition: color 0.3s;
+}
+
+.forgot-link:hover {
+    color: #8b7355;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 0.9rem;
+    color: #666666;
+    cursor: pointer;
+}
+
+.checkbox-group a {
+    color: #a0826d;
+    text-decoration: none;
+}
+
+.checkbox-group a:hover {
+    color: #8b7355;
+    text-decoration: underline;
+}
+
+/* 提交按钮 */
+.auth-submit-btn {
+    background: linear-gradient(135deg, #a0826d, #8b7355);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(160, 130, 109, 0.3);
+}
+
+.auth-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(160, 130, 109, 0.4);
+}
+
+.auth-submit-btn:active {
+    transform: translateY(0);
+}
+
+/* 页脚 */
+.auth-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #d0d0d0;
+}
+
+.auth-footer p {
+    color: #666666;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.auth-footer a {
+    color: #a0826d;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.auth-footer a:hover {
+    color: #8b7355;
+    text-decoration: underline;
+}
+
+.social-login-link {
+    display: inline-block;
+    color: #a0826d;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .auth-page {
+        max-width: 100%;
+    }
+
+    .auth-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .auth-header h1 {
+        font-size: 1.75rem;
+    }
+}
