@@ -420,25 +420,42 @@ body {
 .footer {
     background: rgba(61, 30, 30, 0.8);
     border-top: 2px solid var(--primary-gold);
-    padding: 2rem 0;
+    padding: 3rem 0 2rem;
     margin-top: 4rem;
 }
 
 .footer .container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-section h3 {
+    color: var(--primary-gold);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
 }
 
 .footer-text {
     color: var(--text-secondary);
     font-size: 0.95rem;
+    text-align: center;
 }
 
 .footer-links {
     display: flex;
+    justify-content: center;
     gap: 2rem;
 }
 
@@ -447,6 +464,7 @@ body {
     text-decoration: none;
     font-size: 0.95rem;
     transition: all 0.3s;
+    cursor: pointer;
 }
 
 .footer-links a:hover {
@@ -709,4 +727,31 @@ body {
     color: var(--text-primary);
     line-height: 2;
     white-space: pre-wrap;
+}
+
+/* 信息模态框样式 */
+.info-modal {
+    max-width: 600px;
+}
+
+.info-content {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.info-content h4 {
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.info-content h4:first-child {
+    margin-top: 0;
+}
+
+.info-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
 }
