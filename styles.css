@@ -5,20 +5,20 @@
     box-sizing: border-box;
 }
 
-/* 配色变量 - 深红棕金风 */
+/* 配色变量 - 月白灰金（水墨画风）*/
 :root {
-    --primary-gold: #ffd700;
-    --secondary-gold: #d4af37;
+    --primary-gold: #a0826d;
+    --secondary-gold: #8b7355;
     --accent-red: #c41e3a;
-    --text-primary: #f5f0e1;
-    --text-secondary: #d4c5a9;
-    --text-dark: #2a1810;
-    --bg-main: #3d1e1e;
-    --bg-card: #5a2f2f;
-    --bg-light: #6b3838;
-    --border-color: #7a4040;
-    --shadow-main: 0 4px 20px rgba(61, 30, 30, 0.6);
-    --shadow-gold: 0 0 30px rgba(255, 215, 0, 0.4);
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-dark: #1a1a1a;
+    --bg-main: #e8e8e8;
+    --bg-card: #f5f5f5;
+    --bg-light: #fafafa;
+    --border-color: #d0d0d0;
+    --shadow-main: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-gold: 0 0 30px rgba(160, 130, 109, 0.3);
 }
 
 /* 全局样式 */
@@ -29,8 +29,8 @@ body {
     line-height: 1.8;
     min-height: 100vh;
     background-image: 
-        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(196, 30, 58, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(160, 130, 109, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 115, 85, 0.05) 0%, transparent 50%);
     background-attachment: fixed;
     animation: backgroundShift 20s ease-in-out infinite;
     position: relative;
@@ -46,8 +46,8 @@ body::before {
     right: 0;
     bottom: 0;
     background-image: 
-        repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(255, 215, 0, 0.02) 100px, rgba(255, 215, 0, 0.02) 101px),
-        repeating-linear-gradient(-45deg, transparent, transparent 100px, rgba(255, 215, 0, 0.02) 100px, rgba(255, 215, 0, 0.02) 101px);
+        repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(160, 130, 109, 0.02) 100px, rgba(160, 130, 109, 0.02) 101px),
+        repeating-linear-gradient(-45deg, transparent, transparent 100px, rgba(160, 130, 109, 0.02) 100px, rgba(160, 130, 109, 0.02) 101px);
     pointer-events: none;
     z-index: 0;
 }
